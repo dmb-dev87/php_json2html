@@ -8,6 +8,15 @@ function displayDetalPage() {
   echo '<div class="container">';
 
   iterateIds($res);
+
+  echo '<script>
+  function OnSelectionChange() {
+    if(isset($_GET["period"])){
+      $period=$_GET["period"];
+      echo "select country is => ".$period;
+  }
+  }
+  </script>';
 }
 
 function connectDetal() {
@@ -26,7 +35,7 @@ function connectDetal() {
           "header": {
             "fields": [
               {
-                "Label": "AAAAA :",
+                "Label": "Nome :",
                 "Value": "here goes kid name"
               },
               {
@@ -35,362 +44,368 @@ function connectDetal() {
               }
             ]
           },
-          "blocks": [
-            {
-              "Header text": "1 Bimestre",
-              "barposition": "left",
-              "_comment_barposition": "could be left, right or none",
-              "barcolor": "red",
-              "Columns": [
-                {
-                  "Title": "Matéria",
-                  "Width": "100 %"
-                },
-                {
-                  "Title": "Nota",
-                  "Width": "100 px"
-                },
-                {
-                  "Title": "Falta",
-                  "Width": "100 px"
-                }
-              ],
-              "Lines": [
-                {
-                  "Columns": [
-                    {
-                      "Value": "Matemática"
-                    },
-                    {
-                      "Value": "3,0",
-                      "color": "red"
-                    },
-                    {
-                      "Value": "4"
-                    }
-                  ]
-                },
-                {
-                  "Columns": [
-                    {
-                      "Value": "Português"
-                    },
-                    {
-                      "Value": "6,0",
-                      "color": "blue"
-                    },
-                    {
-                      "Value": "3"
-                    }
-                  ]
-                }
-              ],
-              "Trailer": {
-                "htmlcontent": "some optional value"
-              }
-            },
-            {
-              "Header text": "2 Bimestre",
-              "barposition": "left",
-              "barcolor": "blue",
-              "Columns": [
-                {
-                  "Title": "Matéria",
-                  "Width": "100%"
-                },
-                {
-                  "Title": "Nota",
-                  "Width": "100px"
-                },
-                {
-                  "Title": "Falta",
-                  "Width": "100px"
-                }
-              ],
-              "Lines": [
-                {
-                  "Columns": [
-                    {
-                      "Value": "Matemática",
-                      "color": "blue"
-                    },
-                    {
-                      "Value": "9,5",
-                      "color": "blue"
-                    },
-                    {
-                      "Value": "1",
-                      "color": "red"
-                    }
-                  ]
-                },
-                {
-                  "Columns": [
-                    {
-                      "Value": "Português"
-                    },
-                    {
-                      "Value": "6,0",
-                      "color": "blue"
-                    },
-                    {
-                      "Value": "3"
-                    }
-                  ]
-                }
-              ],
-              "Trailer": {
-                "htmlcontent": "the trailer can be omited"
-              }
-            },
-            {
-              "Header text": "Finais",
-              "barposition": "left",
-              "barcolor": "blue",
-              "Columns": [
-                {
-                  "Title": "Matéria",
-                  "Width": "100%"
-                },
-                {
-                  "Title": "Nota",
-                  "Width": "150px"
-                },
-                {
-                  "Title": "Falta",
-                  "Width": "150px"
-                },
-                {
-                  "Title": "Freq",
-                  "Width": "150px"
-                }
-              ],
-              "Lines": [
-                {
-                  "Columns": [
-                    {
-                      "Value": "Matemática"
-                    },
-                    {
-                      "Value": "8,7",
-                      "color": "blue"
-                    },
-                    {
-                      "Value": "5"
-                    },
-                    {
-                      "Value": "90 %"
-                    }
-                  ]
-                },
-                {
-                  "Columns": [
-                    {
-                      "Value": "Português"
-                    },
-                    {
-                      "Value": "6,0",
-                      "color": "blue"
-                    },
-                    {
-                      "Value": "6"
-                    },
-                    {
-                      "Value": "87 %"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "trailer": {
-            "htmlcontent": " just a sample "
-          }
-        },
-        {
-          "id": "4321",
-          "header": {
-            "fields": [
+          "select": {
+            "Label": "Período",
+            "Default Value": "1º Bimestre",
+            "Values": [
               {
-                "Label": "Nome :",
-                "Value": "Second kid name"
+                "Value": "1º Bimestre"
               },
               {
-                "Label": "Turma :",
-                "Value": "2 Ano A"
+                "Value": "2º Bimestre"
+              },
+              {
+                "Value": "Notas Finais"
+              }
+            ],
+            "Actions": [
+              {
+                "selected value": "1º Bimestre",
+                "blocks": [
+                  {
+                    "Header text": "Matemática",
+                    "barposition": "left",
+                    "_comment_barposition : ": "Could be left, right, none",
+                    "barcolor": "red",
+                    "Columns": [
+                      {
+                        "Title": "Avaliação",
+                        "Width": "100 %"
+                      },
+                      {
+                        "Title": "Nota",
+                        "Width": "100 px"
+                      },
+                      {
+                        "Title": "Falta",
+                        "Width": "100 px"
+                      }
+                    ],
+                    "Lines": [
+                      {
+                        "Columns": [
+                          {
+                            "Value": "Nota 1"
+                          },
+                          {
+                            "Value": "3,0",
+                            "color": "red"
+                          },
+                          {
+                            "Value": "-"
+                          }
+                        ]
+                      },
+                      {
+                        "Columns": [
+                          {
+                            "Value": "Nota 2"
+                          },
+                          {
+                            "Value": "6,0",
+                            "color": "blue"
+                          },
+                          {
+                            "Value": "-"
+                          }
+                        ]
+                      },
+                      {
+                        "Columns": [
+                          {
+                            "Value": "Nota 3"
+                          },
+                          {
+                            "Value": "4,0",
+                            "color": "red"
+                          },
+                          {
+                            "Value": "4"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Header text": "Português",
+                    "barposition": "left",
+                    "barcolor": "blue",
+                    "Columns": [
+                      {
+                        "Title": "Avaliação",
+                        "Width": "100 %"
+                      },
+                      {
+                        "Title": "Nota",
+                        "Width": "100 px"
+                      },
+                      {
+                        "Title": "Falta",
+                        "Width": "100 px"
+                      }
+                    ],
+                    "Lines": [
+                      {
+                        "Columns": [
+                          {
+                            "Value": "Nota 1"
+                          },
+                          {
+                            "Value": "9,5",
+                            "color": "blue"
+                          },
+                          {
+                            "Falta": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "Columns": [
+                          {
+                            "Value": "Nota 2"
+                          },
+                          {
+                            "Value": "6,0",
+                            "color": "blue"
+                          },
+                          {
+                            "Value": "3"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Header text": "Biologia",
+                    "barposition": "left",
+                    "barcolor": "blue",
+                    "Columns": [
+                      {
+                        "Title": "Avaliação",
+                        "Width": "100 %"
+                      },
+                      {
+                        "Title": "Nota",
+                        "Width": "100 px"
+                      },
+                      {
+                        "Title": "Falta",
+                        "Width": "100 px"
+                      }
+                    ],
+                    "Lines": [
+                      {
+                        "Columns": [
+                          {
+                            "Value": "Nota 1"
+                          },
+                          {
+                            "Value": "9,5",
+                            "color": "blue"
+                          },
+                          {
+                            "Value": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "Columns": [
+                          {
+                            "Value": "Nota 2"
+                          },
+                          {
+                            "Value": "6,0",
+                            "color": "blue"
+                          },
+                          {
+                            "Value": "3"
+                          }
+                        ]
+                      }
+                    ],
+                    "trailer": {
+                      "htmlcontent": "Last trailer"
+                    }
+                  }
+                ],
+                "trailer": {
+                  "htmlcontent": "<b> just a sample <\b>"
+                }
+              },
+              {
+                "selected value": "2º Bimestre",
+                "blocks": [
+                  {
+                    "Header text": "Matemática",
+                    "barposition": "left",
+                    "_comment_barposition : ": "Could be left, right, none",
+                    "barcolor": "blue",
+                    "Columns": [
+                      {
+                        "Title": "Avaliação",
+                        "Width": "100 %"
+                      },
+                      {
+                        "Title": "Nota",
+                        "Width": "100 px"
+                      },
+                      {
+                        "Title": "Falta",
+                        "Width": "100 px"
+                      }
+                    ],
+                    "Lines": [
+                      {
+                        "Columns": [
+                          {
+                            "Value": "Nota 1"
+                          },
+                          {
+                            "Value": "8,0",
+                            "color": "blue"
+                          },
+                          {
+                            "Value": "-"
+                          }
+                        ]
+                      },
+                      {
+                        "Columns": [
+                          {
+                            "Value": "Nota 2"
+                          },
+                          {
+                            "Value": "7,0",
+                            "color": "blue"
+                          },
+                          {
+                            "Value": "-"
+                          }
+                        ]
+                      },
+                      {
+                        "Columns": [
+                          {
+                            "Value": "Nota 3"
+                          },
+                          {
+                            "Value": "8,0",
+                            "color": "blue"
+                          },
+                          {
+                            "Value": "4"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Header text": "Português",
+                    "barposition": "left",
+                    "barcolor": "blue",
+                    "Columns": [
+                      {
+                        "Title": "Avalia",
+                        "Width": "100 %"
+                      },
+                      {
+                        "Title": "Nota",
+                        "Width": "100 px"
+                      },
+                      {
+                        "Title": "Falta",
+                        "Width": "100 px"
+                      }
+                    ],
+                    "Lines": [
+                      {
+                        "Columns": [
+                          {
+                            "Value": "Nota 1"
+                          },
+                          {
+                            "Value": "7",
+                            "color": "blue"
+                          },
+                          {
+                            "Falta": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "Columns": [
+                          {
+                            "Value": "Nota 2"
+                          },
+                          {
+                            "Value": "8,0",
+                            "color": "blue"
+                          },
+                          {
+                            "Value": "4"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "Header text": "Biologia",
+                    "barposition": "left",
+                    "barcolor": "red",
+                    "Columns": [
+                      {
+                        "Title": "Avaliação",
+                        "Width": "100 %"
+                      },
+                      {
+                        "Title": "Nota",
+                        "Width": "100 px"
+                      },
+                      {
+                        "Title": "Falta",
+                        "Width": "100 px"
+                      }
+                    ],
+                    "Lines": [
+                      {
+                        "Columns": [
+                          {
+                            "Value": "Nota 1"
+                          },
+                          {
+                            "Value": "4,0",
+                            "color": "red"
+                          },
+                          {
+                            "Value": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "Columns": [
+                          {
+                            "Value": "Nota 2"
+                          },
+                          {
+                            "Value": "6,0",
+                            "color": "blue"
+                          },
+                          {
+                            "Value": "3"
+                          }
+                        ]
+                      }
+                    ],
+                    "trailer": {
+                      "htmlcontent": "Last trailer 2 Bimestre"
+                    }
+                  }
+                ],
+                "trailer": {
+                  "htmlcontent": "<b> just a diferent sample <\b>"
+                }
               }
             ]
-          },
-          "blocks": [
-            {
-              "Header text": "1 Bimestre",
-              "barposition": "left",
-              "_comment_barposition": "could be left, right or none",
-              "barcolor": "red",
-              "Columns": [
-                {
-                  "Title": "Matéria",
-                  "Width": "100 %"
-                },
-                {
-                  "Title": "Nota",
-                  "Width": "100 px"
-                },
-                {
-                  "Title": "Falta",
-                  "Width": "100 px"
-                }
-              ],
-              "Lines": [
-                {
-                  "Columns": [
-                    {
-                      "Value": "Matemática"
-                    },
-                    {
-                      "Value": "3,0",
-                      "color": "red"
-                    },
-                    {
-                      "Value": "4"
-                    }
-                  ]
-                },
-                {
-                  "Columns": [
-                    {
-                      "Value": "Português"
-                    },
-                    {
-                      "Value": "6,0",
-                      "color": "blue"
-                    },
-                    {
-                      "Value": "3"
-                    }
-                  ]
-                }
-              ],
-              "Trailer": {
-                "htmlcontent": "some optional value"
-              }
-            },
-            {
-              "Header text": "2 Bimestre",
-              "barposition": "left",
-              "barcolor": "blue",
-              "Columns": [
-                {
-                  "Title": "Matéria",
-                  "Width": "100 %"
-                },
-                {
-                  "Title": "Nota",
-                  "Width": "100 px"
-                },
-                {
-                  "Title": "Falta",
-                  "Width": "100 px"
-                }
-              ],
-              "Lines": [
-                {
-                  "Columns": [
-                    {
-                      "Value": "Matemática",
-                      "color": "blue"
-                    },
-                    {
-                      "Value": "9,5",
-                      "color": "blue"
-                    },
-                    {
-                      "Value": "1",
-                      "color": "red"
-                    }
-                  ]
-                },
-                {
-                  "Columns": [
-                    {
-                      "Value": "Português"
-                    },
-                    {
-                      "Value": "6,0",
-                      "color": "blue"
-                    },
-                    {
-                      "Value": "3"
-                    }
-                  ]
-                }
-              ],
-              "Trailer": {
-                "htmlcontent": "the trailer can be omited"
-              }
-            },
-            {
-              "Header text": "Finais",
-              "barposition": "left",
-              "barcolor": "blue",
-              "Columns": [
-                {
-                  "Title": "Matéria",
-                  "Width": "100 %"
-                },
-                {
-                  "Title": "Nota",
-                  "Width": "100 px"
-                },
-                {
-                  "Title": "Falta",
-                  "Width": "100 px"
-                },
-                {
-                  "Title": "Freq",
-                  "Width": "100 px"
-                }
-              ],
-              "Lines": [
-                {
-                  "Columns": [
-                    {
-                      "Value": "Matemática"
-                    },
-                    {
-                      "Value": "8,7",
-                      "color": "blue"
-                    },
-                    {
-                      "Value": "5"
-                    },
-                    {
-                      "Value": "90 %"
-                    }
-                  ]
-                },
-                {
-                  "Columns": [
-                    {
-                      "Value": "Português"
-                    },
-                    {
-                      "Value": "6,0",
-                      "color": "blue"
-                    },
-                    {
-                      "Value": "6"
-                    },
-                    {
-                      "Value": "87 %"
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "trailer": {
-            "htmlcontent": "<b> just a sample <\b>"
           }
         }
       ]
@@ -419,12 +434,15 @@ function renderId($id) {
     if ($key === "header") {
       renderHeaderId($val);
     }
-    if ($key === "blocks") {
-      iterateBlocks($val);
+    if ($key === "select") {
+      renderSelectId($val);
     }
-    if ($key === "trailer") {
-      renderTrailerId($val);
-    }
+    // if ($key === "blocks") {
+    //   iterateBlocks($val);
+    // }
+    // if ($key === "trailer") {
+    //   renderTrailerId($val);
+    // }
   }
 }
 
@@ -449,122 +467,39 @@ function renderField($label, $value) {
 }
 //<---------- Header --------->//
 
-//<---------- Blocks --------->//
-function iterateBlocks($val) {
-  $blocks = $val;
-  foreach ($blocks as $block) {
-    renderBlock($block);
-  }
-}
-
-function renderBlock($block) {
-  echo '<div class="row">';
-  $color = $block["barcolor"];
-  renderBar($color);
-  echo '<div class="col block">';
-  $headerText = $block["Header text"];
-  renderHeaderBlock($headerText);
-  echo '
-  <div class="w3-padding w3-white notranslate">
-    <div class="table-responsive">
-      <table class="table">
-        <thead class="thead-light">
-          <tr>';
-          $columns = $block["Columns"];
-  iterateColumns($columns);
-  echo '
-  </tr>
-  </thead>
-  <tbody>';
-
-  $lines = $block["Lines"];
-  iterateLines($lines);
-
-    echo '
-      </tbody>
-      </table>
-      </div>
-      </div>';
-
-    if (array_key_exists("Trailer", $block)) {
-      $trailerContent = $block["Trailer"]["htmlcontent"];
-    } else {
-      $trailerContent = NULL;
+//<---------- Select --------->//
+function renderSelectId($val) {
+  $elements = $val;
+  foreach ($elements as $key => $val) {
+    if ($key === "Label") {
+      echo '<label>'.$val.':</label>';
     }
 
-    renderTrailerBlock($trailerContent);
-    echo '
-      </div>
-      </div>';
-}
+    if ($key === "Values") {
+      $options = $val;
+      echo '<select name="period" onchange="OnSelectionChange(value)">';
+      foreach ($options as $option) {
+        foreach ($option as $optkey => $optval) {
+          echo '<option value="'.$optval.'">'.$optval.'</option>';
+        }
+      }
 
-function renderBar($color) {
-  echo '<div class="col block-bar" style="background-color: ' . $color . '"></div>';
-}
-
-function renderHeaderBlock($headerText) {
-  echo '<div class="block-title">' . $headerText . '</div>';
-}
-
-function iterateColumns($columns) {
-  foreach ($columns as $column) {
-    $title = $column["Title"];
-    $width = $column["Width"];
-    renderColumn($title, $width);
-  }
-}
-
-function renderColumn($title, $width) {
-  $width = str_replace(" ","", $width);
-  echo '<th style="width:' . $width . '">' . $title . '</th>';
-}
-
-function iterateLines($lines) {
-  foreach ($lines as $line) {
-    iterateCells($line);
-  }
-}
-
-function iterateCells($line) {
-  $cells = $line["Columns"];
-  echo '<tr>';
-  foreach ($cells as $cell) {
-    if (array_key_exists("color", $cell)) {
-      $color = $cell["color"];
-      $value = $cell["Value"]; 
-    } else {
-      $color = NULL;
-      $value = $cell["Value"]; 
+      echo '</select>';
     }
-    renderCell($value, $color);
+
   }
-  echo '</tr>';
+
 }
 
-function renderCell($value, $color) {
-  $value = str_replace(" ","", $value);
-  if ($color !== NULL ) {
-      echo '<td style="color:' . $color . '">' . $value . '</td>';
-    } else {
-      echo '<td>' . $value . '</td>';
-    }
- }
-  
-function renderTrailerBlock($trailerContent) {
-  if ($trailerContent !== NULL) {
-    echo '<div class="trailer">' . $trailerContent . '</div>';
-  }
+function showlog() {
+  echo '22222';
 }
-//<---------- Blocks --------->//
 
-//<---------- Trailer --------->//
-function renderTrailerId($val) {
-  echo '
-  <div class="footer">
-  <h5>'.$val["htmlcontent"].'</h5>
-  </div>
-  ';
-}
-//<---------- Trailer --------->//
-
+//<---------- Select --------->//
 ?>
+<script> function OnSelectionChange(value) {
+   
+   console.log( 'AAAAAAAAAAAAAA' + value);
+   alert("<?php showlog(); ?>");
+  }
+ </script>

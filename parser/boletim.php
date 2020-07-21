@@ -3,11 +3,11 @@
 function displayPage() {
   $res = connect();
 
-  if ($res === NULL)
+  if ($res === NULL) 
     return 0;
   echo '<div class="container">';
 
-  iterateIds($res);
+  iterateIds($res);    
 }
 
 function connect() {
@@ -15,7 +15,7 @@ function connect() {
 /*
  * Add API URL here
  */
-//  $url = "http://jsonurlXXXXX";
+//  $url = "http://jsonurlXXXXX"; 
 //  $data = file_get_contents($url);
 
 // test json data
@@ -390,7 +390,7 @@ function connect() {
             }
           ],
           "trailer": {
-            "htmlcontent": "<b> just a sample <\b>"
+            "htmlcontent": "<b> just a sample </b>"
           }
         }
       ]
@@ -437,15 +437,18 @@ function renderHeaderId($val) {
 function iterateFields($heads) {
   echo '<div class="header">';
   foreach ($heads as $head) {
+    echo '<div class="row">';
     $label = $head["Label"];
     $value = $head["Value"];
     renderField($label, $value);
+    echo '</div>';
   }
   echo '</div>';
 }
 
 function renderField($label, $value) {
-  echo '<p><b>' . $label . '</b>&nbsp;&nbsp;&nbsp;' . $value . '</p>';
+  echo '<p class="label">'.$label . '</p>';
+  echo '<p class="value">' . $value . '</p>';
 }
 //<---------- Header --------->//
 
@@ -499,7 +502,7 @@ function renderBlock($block) {
 }
 
 function renderBar($color) {
-  echo '<div class="col block-bar" style="background-color: ' . $color . '"></div>';
+  echo '<div class="col block-bar" style="background-color: ' . $color . '; border-color: ' . $color . '"></div>';
 }
 
 function renderHeaderBlock($headerText) {
@@ -562,8 +565,7 @@ function renderTrailerId($val) {
   echo '
   <div class="footer">
   <h5>'.$val["htmlcontent"].'</h5>
-  </div>
-  ';
+  </div>';
 }
 //<---------- Trailer --------->//
 
