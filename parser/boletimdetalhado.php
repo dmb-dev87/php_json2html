@@ -8,15 +8,14 @@ function displayDetalPage() {
   echo '<div class="container">';
 
   iterateIds($res);
-
-  echo '<script>
-  function OnSelectionChange() {
-    if(isset($_GET["period"])){
-      $period=$_GET["period"];
-      echo "select country is => ".$period;
-  }
-  }
-  </script>';
+  // echo '<script>
+  // function OnSelectionChange() {
+  //   if(isset($_GET["period"])){
+  //     $period=$_GET["period"];
+  //     echo "select country is => ".$period;
+  // }
+  // }
+  // </script>';
 }
 
 function connectDetal() {
@@ -155,7 +154,7 @@ function connectDetal() {
                             "color": "blue"
                           },
                           {
-                            "Falta": "1"
+                            "Value": "1"
                           }
                         ]
                       },
@@ -229,7 +228,7 @@ function connectDetal() {
                   }
                 ],
                 "trailer": {
-                  "htmlcontent": "<b> just a sample <\b>"
+                  "htmlcontent": "<b> just a sample </b>"
                 }
               },
               {
@@ -328,7 +327,7 @@ function connectDetal() {
                             "color": "blue"
                           },
                           {
-                            "Falta": "1"
+                            "Value": "1"
                           }
                         ]
                       },
@@ -402,7 +401,7 @@ function connectDetal() {
                   }
                 ],
                 "trailer": {
-                  "htmlcontent": "<b> just a diferent sample <\b>"
+                  "htmlcontent": "<b> just a diferent sample </b>"
                 }
               }
             ]
@@ -437,12 +436,6 @@ function renderId($id) {
     if ($key === "select") {
       renderSelectId($val);
     }
-    // if ($key === "blocks") {
-    //   iterateBlocks($val);
-    // }
-    // if ($key === "trailer") {
-    //   renderTrailerId($val);
-    // }
   }
 }
 
@@ -453,53 +446,187 @@ function renderHeaderId($val) {
 }
 
 function iterateFields($heads) {
-  echo '<div class="header">';
+  echo '<div class="header">';  
   foreach ($heads as $head) {
+    echo '<div class="row">';
     $label = $head["Label"];
     $value = $head["Value"];
     renderField($label, $value);
-  }
+    echo '</div>';
+  }  
   echo '</div>';
 }
 
 function renderField($label, $value) {
-  echo '<p><b>' . $label . '</b>&nbsp;&nbsp;&nbsp;' . $value . '</p>';
+  echo '<p class="label">'.$label . '</p>';
+  echo '<p class="value">' . $value . '</p>';
 }
 //<---------- Header --------->//
 
 //<---------- Select --------->//
 function renderSelectId($val) {
   $elements = $val;
+  echo '<div class="row selector">';
   foreach ($elements as $key => $val) {
     if ($key === "Label") {
-      echo '<label>'.$val.':</label>';
+      echo '<p class="label">'.$val.':</p>';
+    }
+
+    if ($key === "Default Value") {
+      $default_value = str_replace(" ", "", $val);
     }
 
     if ($key === "Values") {
       $options = $val;
-      echo '<select name="period" onchange="OnSelectionChange(value)">';
+      echo '<select id="period">';
       foreach ($options as $option) {
         foreach ($option as $optkey => $optval) {
-          echo '<option value="'.$optval.'">'.$optval.'</option>';
+          $selected = $default_value===$optval?' selected':' ';
+          echo '<option value="'.str_replace(" ", "", $optval). '" ' . $selected.'>'.$optval.'</option>';
         }
       }
-
-      echo '</select>';
+      echo '</select></div>';
     }
 
+    if ($key === "Actions") {
+      $actions = $val;
+      foreach($actions as $action) {
+        renderAction($action);
+      }
+    }
+  }
+}
+
+function renderAction($action) {
+  $elements = $action;
+
+  foreach($elements as $key => $val) {
+    if ($key === "selected value") {
+      $id_value = str_replace(" ", "", $val);
+      echo '<div class="action col" id="' . str_replace(" ", "", $val) . '">';
+    }
+    if ($key === "blocks") {
+      iterateBlocks($val);  
+    }
+    if ($key === "trailer") {
+      renderTrailerId($val);  
+    }
   }
 
+  echo '</div>';
 }
 
-function showlog() {
-  echo '22222';
+function iterateBlocks($val) {
+  $blocks = $val;
+  foreach ($blocks as $block) {
+    renderBlock($block);
+  }
 }
 
-//<---------- Select --------->//
+function renderBlock($block) {
+  echo '<div class="row">';
+  $color = $block["barcolor"];
+  renderBar($color);
+  echo '<div class="col block">';
+  $headerText = $block["Header text"];
+  renderHeaderBlock($headerText);
+  echo '
+  <div class="w3-padding w3-white notranslate">
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>';
+          $columns = $block["Columns"];
+  iterateColumns($columns);
+  echo '
+  </tr>
+  </thead>
+  <tbody>';
+
+  $lines = $block["Lines"];
+  iterateLines($lines);
+
+    echo '
+      </tbody>
+      </table>
+      </div>
+      </div>';
+
+    if (array_key_exists("trailer", $block)) {
+      $trailerContent = $block["trailer"]["htmlcontent"];
+    } else {
+      $trailerContent = NULL;
+    }
+
+    renderTrailerBlock($trailerContent);
+    echo '
+      </div>
+      </div>';
+}
+
+function renderBar($color) {
+  echo '<div class="col block-bar" style="background-color: ' . $color . '; border-color: ' . $color . '"></div>';
+}
+
+function renderHeaderBlock($headerText) {
+  echo '<div class="block-title">' . $headerText . '</div>';
+}
+
+function iterateColumns($columns) {
+  foreach ($columns as $column) {
+    $title = $column["Title"];
+    $width = $column["Width"];
+    renderColumn($title, $width);
+  }
+}
+
+function renderColumn($title, $width) {
+  $width = str_replace(" ","", $width);
+  echo '<th style="width:' . $width . '">' . $title . '</th>';
+}
+
+function iterateLines($lines) {
+  foreach ($lines as $line) {
+    iterateCells($line);
+  }
+}
+
+function iterateCells($line) {
+  $cells = $line["Columns"];
+  echo '<tr>';
+  foreach ($cells as $cell) {
+    if (array_key_exists("color", $cell)) {
+      $color = $cell["color"];
+      $value = $cell["Value"]; 
+    } else {
+      $color = NULL;
+      $value = $cell["Value"]; 
+    }
+    renderCell($value, $color);
+  }
+  echo '</tr>';
+}
+
+function renderCell($value, $color) {
+  $value = str_replace(" ","", $value);
+  if ($color !== NULL ) {
+      echo '<td style="color:' . $color . '">' . $value . '</td>';
+    } else {
+      echo '<td>' . $value . '</td>';
+    }
+ }
+  
+function renderTrailerBlock($trailerContent) {
+  if ($trailerContent !== NULL) {
+    echo '<div class="trailer">' . $trailerContent . '</div>';
+  }
+}
+
+function renderTrailerId($val) {
+  echo '
+  <div class="footer">
+  <h5>'.$val["htmlcontent"].'</h5>
+  </div>';
+}
+
 ?>
-<script> function OnSelectionChange(value) {
-   
-   console.log( 'AAAAAAAAAAAAAA' + value);
-   alert("<?php showlog(); ?>");
-  }
- </script>
