@@ -431,24 +431,24 @@ function renderId($id) {
 //<---------- Header --------->//
 function renderHeaderId($val) {
   $heads = $val["fields"];
-  iterateFields($heads);
-}
-
-function iterateFields($heads) {
   echo '<div class="header">';
-  foreach ($heads as $head) {
-    echo '<div class="row">';
-    $label = $head["Label"];
-    $value = $head["Value"];
-    renderField($label, $value);
-    echo '</div>';
-  }
+  iterateFields($heads);
   echo '</div>';
 }
 
+function iterateFields($heads) {
+  foreach ($heads as $head) {
+    $label = $head["Label"];
+    $value = $head["Value"];
+    renderField($label, $value);
+  }
+}
+
 function renderField($label, $value) {
+  echo '<div class="row">';
   echo '<p class="label">'.$label . '</p>';
   echo '<p class="value">' . $value . '</p>';
+  echo '</div>';
 }
 //<---------- Header --------->//
 
@@ -553,9 +553,9 @@ function renderCell($value, $color) {
     }
  }
   
-function renderTrailerBlock($trailerContent) {
-  if ($trailerContent !== NULL) {
-    echo '<div class="trailer">' . $trailerContent . '</div>';
+function renderTrailerBlock($val) {
+  if ($val !== NULL) {
+    echo '<div class="trailer">' . $val . '</div>';
   }
 }
 //<---------- Blocks --------->//
@@ -564,7 +564,7 @@ function renderTrailerBlock($trailerContent) {
 function renderTrailerId($val) {
   echo '
   <div class="footer">
-  <h5>'.$val["htmlcontent"].'</h5>
+  '.$val["htmlcontent"].'
   </div>';
 }
 //<---------- Trailer --------->//
