@@ -1,7 +1,7 @@
 <?php
 
-function displayDetalPage() {
-  $res = connectDetal();
+function displayPage() {
+  $res = connect();
 
   if ($res === NULL)
     return 0;
@@ -18,7 +18,7 @@ function displayDetalPage() {
   // </script>';
 }
 
-function connectDetal() {
+function connect() {
 
 /*
  * Add API URL here
@@ -27,7 +27,8 @@ function connectDetal() {
 //  $data = file_get_contents($url);
 
 // test json data
-    $data = '{
+    $data = '
+    {
       "ids": [
         {
           "id": "1234",
@@ -154,7 +155,7 @@ function connectDetal() {
                             "color": "blue"
                           },
                           {
-                            "Value": "1"
+                            "Falta": "1"
                           }
                         ]
                       },
@@ -327,7 +328,7 @@ function connectDetal() {
                             "color": "blue"
                           },
                           {
-                            "Value": "1"
+                            "Falta": "1"
                           }
                         ]
                       },
@@ -408,7 +409,8 @@ function connectDetal() {
           }
         }
       ]
-    }';
+    }
+    ';
 
     $res = json_decode($data, true);
 
@@ -436,30 +438,36 @@ function renderId($id) {
     if ($key === "select") {
       renderSelectId($val);
     }
+    if ($key === "blocks") {
+      iterateBlocks($val);
+    }
+    if ($key === "trailer") {
+      renderTrailerId($val);
+    }
   }
 }
 
 //<---------- Header --------->//
 function renderHeaderId($val) {
   $heads = $val["fields"];
-  iterateFields($heads);
-}
-
-function iterateFields($heads) {
   echo '<div class="header">';  
-  foreach ($heads as $head) {
-    echo '<div class="row">';
-    $label = $head["Label"];
-    $value = $head["Value"];
-    renderField($label, $value);
-    echo '</div>';
-  }  
+  iterateFields($heads);
   echo '</div>';
 }
 
+function iterateFields($heads) {
+  foreach ($heads as $head) {
+    $label = $head["Label"];
+    $value = $head["Value"];
+    renderField($label, $value);
+  }  
+}
+
 function renderField($label, $value) {
+  echo '<div class="row">';
   echo '<p class="label">'.$label . '</p>';
   echo '<p class="value">' . $value . '</p>';
+  echo '</div>';
 }
 //<---------- Header --------->//
 
@@ -595,12 +603,19 @@ function iterateCells($line) {
   $cells = $line["Columns"];
   echo '<tr>';
   foreach ($cells as $cell) {
+    if (array_key_exists("Falta", $cell)) {
+      $value = $cell["Falta"];
+    }
+    if (array_key_exists("Value", $cell)) {
+      $value = $cell["Value"];
+    }
+    if (array_key_exists("val", $cell)) {
+      $value = $cell["val"];
+    }
     if (array_key_exists("color", $cell)) {
       $color = $cell["color"];
-      $value = $cell["Value"]; 
     } else {
       $color = NULL;
-      $value = $cell["Value"]; 
     }
     renderCell($value, $color);
   }
@@ -616,16 +631,16 @@ function renderCell($value, $color) {
     }
  }
   
-function renderTrailerBlock($trailerContent) {
-  if ($trailerContent !== NULL) {
-    echo '<div class="trailer">' . $trailerContent . '</div>';
+function renderTrailerBlock($val) {
+  if ($val !== NULL) {
+    echo '<div class="trailer">' . $val . '</div>';
   }
 }
 
 function renderTrailerId($val) {
   echo '
   <div class="footer">
-  <h5>'.$val["htmlcontent"].'</h5>
+  '.$val["htmlcontent"].'
   </div>';
 }
 
