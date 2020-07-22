@@ -1,4 +1,4 @@
-.header {
+.card {
     margin-top: 30px;
     margin-bottom: 10px;
     background-color: #d9d9d9;
@@ -7,18 +7,11 @@
     padding: 10px 15px 10px 15px;
 }
 
-.header .row {
-    margin-bottom: 0px;
-    padding: 4px 10px;
-}
 
-.header .p {
+.card .p {
     margin-bottom: 0px;
 }
 
-body {
-    font-size: 14px;
-}
 
 .label {
     font-weight: 700;
@@ -40,12 +33,9 @@ body {
     font-size: 12px;
 }
 
-.trailer {
-    background-color: #0606066e;
-    text-align: left;
-    font-size: 12px;
-    padding: 2px 10px;
-    margin-top: 10px;
+.block {
+    padding: 0px;
+    margin: 0px;
 }
 
 .block-bar {
@@ -57,37 +47,26 @@ body {
     margin-right: 4px;
 }
 
-.block-title {
-    margin-bottom: 10px;
-    background-color: #0606066e;
-    border: 1.5px solid #1212125c;
-    border-radius: 6px;
-    text-align: center;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 2px;
-}
-
 .row {
     padding: 0px 15px;
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
-.block {
-    padding: 0px;
-    margin: 0px;
-}
-
-.footer {
+.link-tag {
     margin-top: 20px;
-    margin-bottom: 10px;
-    background-color: #21212142;
-    padding: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: #28bd28;
+    border-radius: 12px;
     text-align: center;
+    line-height: 34px;
 }
 
-.footer h5 {
-    font-size: 12px;
+.link-tag p {
+    color: white;
     font-weight: 700;
-    margin-bottom: 0px;
+}
+
+body {
+    font-size: 14px;
 }
