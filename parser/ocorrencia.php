@@ -209,20 +209,20 @@ function renderHeaderId($val)
 function iterateFields($heads, $style)
 {
     echo '<div class="' . $style . '">';
+    echo '<table>';
     foreach ($heads as $head) {
-        echo '<div class="row">';
         $label = $head["Label"];
         $value = $head["Value"];
         renderField($label, $value);
-        echo '</div>';
     }
+    echo '</table>';
     echo '</div>';
 }
 
 function renderField($label, $value)
 {
-    echo '<p class="label">' . $label . '</p>';
-    echo '<p class="value">' . $value . '</p>';
+    echo '<tr><td style="text-align: right; width: 70px; font-weight: 600">' . $label . '</td>';
+    echo '<td>' . $value . '</td></tr>';
 }
 //<---------- Header --------->//
 
