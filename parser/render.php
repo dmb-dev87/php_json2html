@@ -2,20 +2,21 @@
 
 function displayPage() {
   $res = connect();
-
+  
   if ($res === NULL)
-    return 0;
+  return 0;
   echo '<div class="container">';
-
+  
   iterateIds($res);
   // echo '<script>
   // function OnSelectionChange() {
-  //   if(isset($_GET["period"])){
+    //   if(isset($_GET["period"])){
   //     $period=$_GET["period"];
   //     echo "select country is => ".$period;
   // }
   // }
   // </script>';
+  echo '</div>';
 }
 
 function connect() {
@@ -31,7 +32,7 @@ function connect() {
     {
       "ids": [
         {
-          "id": "1234",
+          "id": "1",
           "header": {
             "style": "card",
             "fields": [
@@ -40,89 +41,53 @@ function connect() {
                 "Value": "here goes kid name"
               },
               {
-                "Label": "Turma :",
-                "Value": "1 Ano A"
+                "Label": "Data :",
+                "Value": "26/06/2020 15:30"
+              },
+              {
+                "Label": "Matéria :",
+                "Value": "Português"
+              },
+              {
+                "Label": "Professor :",
+                "Value": "Fulano de tal"
               }
             ]
           },
           "blocks": [
             {
-              "Header text": "Documento",
               "barposition": "left",
               "barcolor": "red",
               "Columns": [
                 {
-                  "Title": "Documento",
+                  "Title": "Ocorrência",
                   "Width": "100 %"
-                },
-                {
-                  "Title": "2020",
-                  "Width": "100 px"
-                },
-                {
-                  "Title": "2019",
-                  "Width": "100 px"
                 }
               ],
               "Lines": [
                 {
-            "minHeight" : "100 px",
                   "Columns": [
                     {
-                      "Value": "CPF do Responsável"
-                    },
-                    {
-                      "Value": "Em falta",
-                      "Notication State": "DANGER"
-                    },
-                    {
-                      "Value": ""
+                      "Value": "Here we can have very big text\\nWith many lines\\nfasd\\nfadsf\\nfsad\\nfasdfasdfafasdfa"
                     }
                   ]
-                },
+                }
+              ]
+            },
+            {
+              "barposition": "left",
+              "barcolor": "green",
+              "Columns": [
                 {
-            "minHeight" : "100 px",
+                  "Title": "Solução",
+                  "Width": "100 %"
+                }
+              ],
+              "Lines": [
+                {
                   "Columns": [
                     {
-                      "Value": "Foto 3x4"
-                    },
-                    {
-                      "Value": "Entregar até 29/06/2020",
-                      "Notication State": "INFO"
-                    },
-                    {
-                      "Value": "OK",
-                      "Notication State": "SUCCESS"
-                    }
-                  ]
-                },
-                {
-            "minHeight" : "100 px",
-                  "Columns": [
-                    {
-                      "Value": "Histórico escolar do Ensino Fundamental"
-                    },
-                    {
-                      "Value": "OK",
-                      "Notication State": "SUCCESS"
-                    },
-                    {
-                      "Value": ""
-                    }
-                  ]
-                },
-                {
-            "minHeight" : "100 px",
-                  "Columns": [
-                    {
-                      "Value": "Histórico escolar do Ensino Médio"
-                    },
-                    {
-                      "Value": "Atualizar até 29/06/2020",
-                      "Notication State": "WARNING"
-                    },
-                    {
-                      "Value": ""
+                      "Value": "Here we can have very big text too\\nWith many lines, or just a few ones"
                     }
                   ]
                 }
@@ -131,81 +96,62 @@ function connect() {
           ]
         },
         {
-          "id": "4321",
+          "id": "2",
           "header": {
             "style": "card",
             "fields": [
               {
                 "Label": "Nome :",
-                "Value": "second kid name"
+                "Value": "here goes kid name"
               },
               {
-                "Label": "Turma :",
-                "Value": "1 Ano A"
+                "Label": "Data :",
+                "Value": "26/06/2020 15:30"
+              },
+              {
+                "Label": "Matéria : ",
+                "Value": "Português"
+              },
+              {
+                "Label": "Professor :",
+                "Value": "Fulano de tal"
               }
             ]
           },
           "blocks": [
             {
-              "Header text": "Documento",
               "barposition": "left",
               "barcolor": "red",
               "Columns": [
                 {
-                  "Title": "Documento",
+                  "Title": "Ocorrência",
                   "Width": "100 %"
-                },
-                {
-                  "Title": "2020",
-                  "Width": "100 px"
                 }
               ],
               "Lines": [
                 {
-            "minHeight" : "100 px",
                   "Columns": [
                     {
-                      "Value": "CPF do Responsável"
-                    },
-                    {
-                      "Value": "Em falta",
-                      "Notication State": "DANGER"
+                      "Value": "Here we can have very big text"
                     }
                   ]
-                },
+                }
+              ]
+            },
+            {
+              "barposition": "left",
+              "barcolor": "blue",
+              "Columns": [
                 {
-            "minHeight" : "100 px",
+                  "Title": "Solução",
+                  "Width": "100 %"
+                }
+              ],
+              "Lines": [
+                {
                   "Columns": [
                     {
-                      "Value": "Foto 3x4"
-                    },
-                    {
-                      "Value": "Entregar até 29/06/2020",
-                      "Notication State": "INFO"
-                    }
-                  ]
-                },
-                {
-            "minHeight" : "100 px",
-                  "Columns": [
-                    {
-                      "Value": "Histórico escolar do Ensino Fundamental"
-                    },
-                    {
-                      "Value": "OK",
-                      "Notication State": "SUCCESS"
-                    }
-                  ]
-                },
-                {
-            "minHeight" : "100 px",
-                  "Columns": [
-                    {
-                      "Value": "Histórico escolar do Ensino Médio"
-                    },
-                    {
-                      "Value": "Atualizar até 29/06/2020",
-                      "Notication State": "WARNING"
+                      "Value": "Here we can have very big text too\\nWith many lines, or just a few ones"
                     }
                   ]
                 }
@@ -213,7 +159,11 @@ function connect() {
             }
           ]
         }
-      ]
+      ],
+      "DownloadMoreData": {
+        "Caption": "LOAD MORE DATA",
+        "link": "httponsonocorrencia2.txt"
+     }
     }
     ';
 
@@ -229,7 +179,10 @@ function iterateIds($json) {
     foreach ($ids as $id) {
       renderId($id);
     }
-    echo '</div>';
+  }
+
+  if (array_key_exists("DownloadMoreData", $json)) {
+    renderLoadTag($json["DownloadMoreData"]);
   }
 
   return null;
@@ -263,7 +216,11 @@ function renderHeaderId($val) {
 function iterateFields($heads) {
   foreach ($heads as $head) {
     $label = $head["Label"];
-    $value = $head["Value"];
+    if (array_key_exists("Value", $head)) {
+      $value = $head["Value"];
+    } else {
+      $value = null;
+    }
     renderField($label, $value);
   }  
 }
@@ -271,7 +228,9 @@ function iterateFields($heads) {
 function renderField($label, $value) {
   echo '<div class="row">';
   echo '<p class="label">'.$label . '</p>';
-  echo '<p class="value">' . $value . '</p>';
+  if ($value !== null) {
+    echo '<p class="value">' . $value . '</p>';
+  }
   echo '</div>';
 }
 //<---------- Header --------->//
@@ -341,8 +300,10 @@ function renderBlock($block) {
   $color = $block["barcolor"];
   renderBar($color);
   echo '<div class="col block">';
-  $headerText = $block["Header text"];
-  renderHeaderBlock($headerText);
+  if (array_key_exists("Header text", $block)) {
+    $headerText = $block["Header text"];
+    renderHeaderBlock($headerText);
+  }
   echo '
   <div class="w3-padding w3-white notranslate">
     <div class="table-responsive">
@@ -424,7 +385,7 @@ function iterateCells($line) {
     } else {
       $color = NULL;
     }
-    renderCell($value, $color);
+    renderCell(nl2br($value), $color);
   }
   echo '</tr>';
 }
@@ -459,6 +420,14 @@ function renderTrailerId($val) {
   <div class="footer">
   '.$val["htmlcontent"].'
   </div>';
+}
+
+function renderLoadTag($val) {
+  echo '
+  <div class="link-tag">
+  '.$val["Caption"].'
+  <div>';
+
 }
 
 ?>

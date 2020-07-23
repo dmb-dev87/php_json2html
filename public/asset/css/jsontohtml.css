@@ -3,7 +3,7 @@ body {
 }
 
 .header {
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 10px;
   background-color: #d9d9d9;
   border: 1px solid #b6b6b6;
@@ -110,4 +110,14 @@ select#period {
   line-break: anywhere;
   line-height: 30px;
   color: white;
+}
+
+.link-tag {
+  margin-top: 20px;
+  background-color: #28bd28;
+  border-radius: 12px;
+  text-align: center;
+  line-height: 34px;
+  color: white;
+  font-weight: 700;
 }
