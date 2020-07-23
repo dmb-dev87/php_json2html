@@ -33,6 +33,7 @@ function connect() {
         {
           "id": "1234",
           "header": {
+            "style": "card",
             "fields": [
               {
                 "Label": "Nome :",
@@ -44,369 +45,173 @@ function connect() {
               }
             ]
           },
-          "select": {
-            "Label": "Período",
-            "Default Value": "1º Bimestre",
-            "Values": [
-              {
-                "Value": "1º Bimestre"
-              },
-              {
-                "Value": "2º Bimestre"
-              },
-              {
-                "Value": "Notas Finais"
-              }
-            ],
-            "Actions": [
-              {
-                "selected value": "1º Bimestre",
-                "blocks": [
-                  {
-                    "Header text": "Matemática",
-                    "barposition": "left",
-                    "_comment_barposition : ": "Could be left, right, none",
-                    "barcolor": "red",
-                    "Columns": [
-                      {
-                        "Title": "Avaliação",
-                        "Width": "100 %"
-                      },
-                      {
-                        "Title": "Nota",
-                        "Width": "100 px"
-                      },
-                      {
-                        "Title": "Falta",
-                        "Width": "100 px"
-                      }
-                    ],
-                    "Lines": [
-                      {
-                        "Columns": [
-                          {
-                            "Value": "Nota 1"
-                          },
-                          {
-                            "Value": "3,0",
-                            "color": "red"
-                          },
-                          {
-                            "Value": "-"
-                          }
-                        ]
-                      },
-                      {
-                        "Columns": [
-                          {
-                            "Value": "Nota 2"
-                          },
-                          {
-                            "Value": "6,0",
-                            "color": "blue"
-                          },
-                          {
-                            "Value": "-"
-                          }
-                        ]
-                      },
-                      {
-                        "Columns": [
-                          {
-                            "Value": "Nota 3"
-                          },
-                          {
-                            "Value": "4,0",
-                            "color": "red"
-                          },
-                          {
-                            "Value": "4"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Header text": "Português",
-                    "barposition": "left",
-                    "barcolor": "blue",
-                    "Columns": [
-                      {
-                        "Title": "Avaliação",
-                        "Width": "100 %"
-                      },
-                      {
-                        "Title": "Nota",
-                        "Width": "100 px"
-                      },
-                      {
-                        "Title": "Falta",
-                        "Width": "100 px"
-                      }
-                    ],
-                    "Lines": [
-                      {
-                        "Columns": [
-                          {
-                            "Value": "Nota 1"
-                          },
-                          {
-                            "Value": "9,5",
-                            "color": "blue"
-                          },
-                          {
-                            "Falta": "1"
-                          }
-                        ]
-                      },
-                      {
-                        "Columns": [
-                          {
-                            "Value": "Nota 2"
-                          },
-                          {
-                            "Value": "6,0",
-                            "color": "blue"
-                          },
-                          {
-                            "Value": "3"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Header text": "Biologia",
-                    "barposition": "left",
-                    "barcolor": "blue",
-                    "Columns": [
-                      {
-                        "Title": "Avaliação",
-                        "Width": "100 %"
-                      },
-                      {
-                        "Title": "Nota",
-                        "Width": "100 px"
-                      },
-                      {
-                        "Title": "Falta",
-                        "Width": "100 px"
-                      }
-                    ],
-                    "Lines": [
-                      {
-                        "Columns": [
-                          {
-                            "Value": "Nota 1"
-                          },
-                          {
-                            "Value": "9,5",
-                            "color": "blue"
-                          },
-                          {
-                            "Value": "1"
-                          }
-                        ]
-                      },
-                      {
-                        "Columns": [
-                          {
-                            "Value": "Nota 2"
-                          },
-                          {
-                            "Value": "6,0",
-                            "color": "blue"
-                          },
-                          {
-                            "Value": "3"
-                          }
-                        ]
-                      }
-                    ],
-                    "trailer": {
-                      "htmlcontent": "Last trailer"
-                    }
-                  }
-                ],
-                "trailer": {
-                  "htmlcontent": "<b> just a sample </b>"
+          "blocks": [
+            {
+              "Header text": "Documento",
+              "barposition": "left",
+              "barcolor": "red",
+              "Columns": [
+                {
+                  "Title": "Documento",
+                  "Width": "100 %"
+                },
+                {
+                  "Title": "2020",
+                  "Width": "100 px"
+                },
+                {
+                  "Title": "2019",
+                  "Width": "100 px"
                 }
+              ],
+              "Lines": [
+                {
+            "minHeight" : "100 px",
+                  "Columns": [
+                    {
+                      "Value": "CPF do Responsável"
+                    },
+                    {
+                      "Value": "Em falta",
+                      "Notication State": "DANGER"
+                    },
+                    {
+                      "Value": ""
+                    }
+                  ]
+                },
+                {
+            "minHeight" : "100 px",
+                  "Columns": [
+                    {
+                      "Value": "Foto 3x4"
+                    },
+                    {
+                      "Value": "Entregar até 29/06/2020",
+                      "Notication State": "INFO"
+                    },
+                    {
+                      "Value": "OK",
+                      "Notication State": "SUCCESS"
+                    }
+                  ]
+                },
+                {
+            "minHeight" : "100 px",
+                  "Columns": [
+                    {
+                      "Value": "Histórico escolar do Ensino Fundamental"
+                    },
+                    {
+                      "Value": "OK",
+                      "Notication State": "SUCCESS"
+                    },
+                    {
+                      "Value": ""
+                    }
+                  ]
+                },
+                {
+            "minHeight" : "100 px",
+                  "Columns": [
+                    {
+                      "Value": "Histórico escolar do Ensino Médio"
+                    },
+                    {
+                      "Value": "Atualizar até 29/06/2020",
+                      "Notication State": "WARNING"
+                    },
+                    {
+                      "Value": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4321",
+          "header": {
+            "style": "card",
+            "fields": [
+              {
+                "Label": "Nome :",
+                "Value": "second kid name"
               },
               {
-                "selected value": "2º Bimestre",
-                "blocks": [
-                  {
-                    "Header text": "Matemática",
-                    "barposition": "left",
-                    "_comment_barposition : ": "Could be left, right, none",
-                    "barcolor": "blue",
-                    "Columns": [
-                      {
-                        "Title": "Avaliação",
-                        "Width": "100 %"
-                      },
-                      {
-                        "Title": "Nota",
-                        "Width": "100 px"
-                      },
-                      {
-                        "Title": "Falta",
-                        "Width": "100 px"
-                      }
-                    ],
-                    "Lines": [
-                      {
-                        "Columns": [
-                          {
-                            "Value": "Nota 1"
-                          },
-                          {
-                            "Value": "8,0",
-                            "color": "blue"
-                          },
-                          {
-                            "Value": "-"
-                          }
-                        ]
-                      },
-                      {
-                        "Columns": [
-                          {
-                            "Value": "Nota 2"
-                          },
-                          {
-                            "Value": "7,0",
-                            "color": "blue"
-                          },
-                          {
-                            "Value": "-"
-                          }
-                        ]
-                      },
-                      {
-                        "Columns": [
-                          {
-                            "Value": "Nota 3"
-                          },
-                          {
-                            "Value": "8,0",
-                            "color": "blue"
-                          },
-                          {
-                            "Value": "4"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Header text": "Português",
-                    "barposition": "left",
-                    "barcolor": "blue",
-                    "Columns": [
-                      {
-                        "Title": "Avalia",
-                        "Width": "100 %"
-                      },
-                      {
-                        "Title": "Nota",
-                        "Width": "100 px"
-                      },
-                      {
-                        "Title": "Falta",
-                        "Width": "100 px"
-                      }
-                    ],
-                    "Lines": [
-                      {
-                        "Columns": [
-                          {
-                            "Value": "Nota 1"
-                          },
-                          {
-                            "Value": "7",
-                            "color": "blue"
-                          },
-                          {
-                            "Falta": "1"
-                          }
-                        ]
-                      },
-                      {
-                        "Columns": [
-                          {
-                            "Value": "Nota 2"
-                          },
-                          {
-                            "Value": "8,0",
-                            "color": "blue"
-                          },
-                          {
-                            "Value": "4"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "Header text": "Biologia",
-                    "barposition": "left",
-                    "barcolor": "red",
-                    "Columns": [
-                      {
-                        "Title": "Avaliação",
-                        "Width": "100 %"
-                      },
-                      {
-                        "Title": "Nota",
-                        "Width": "100 px"
-                      },
-                      {
-                        "Title": "Falta",
-                        "Width": "100 px"
-                      }
-                    ],
-                    "Lines": [
-                      {
-                        "Columns": [
-                          {
-                            "Value": "Nota 1"
-                          },
-                          {
-                            "Value": "4,0",
-                            "color": "red"
-                          },
-                          {
-                            "Value": "1"
-                          }
-                        ]
-                      },
-                      {
-                        "Columns": [
-                          {
-                            "Value": "Nota 2"
-                          },
-                          {
-                            "Value": "6,0",
-                            "color": "blue"
-                          },
-                          {
-                            "Value": "3"
-                          }
-                        ]
-                      }
-                    ],
-                    "trailer": {
-                      "htmlcontent": "Last trailer 2 Bimestre"
-                    }
-                  }
-                ],
-                "trailer": {
-                  "htmlcontent": "<b> just a diferent sample </b>"
-                }
+                "Label": "Turma :",
+                "Value": "1 Ano A"
               }
             ]
-          }
+          },
+          "blocks": [
+            {
+              "Header text": "Documento",
+              "barposition": "left",
+              "barcolor": "red",
+              "Columns": [
+                {
+                  "Title": "Documento",
+                  "Width": "100 %"
+                },
+                {
+                  "Title": "2020",
+                  "Width": "100 px"
+                }
+              ],
+              "Lines": [
+                {
+            "minHeight" : "100 px",
+                  "Columns": [
+                    {
+                      "Value": "CPF do Responsável"
+                    },
+                    {
+                      "Value": "Em falta",
+                      "Notication State": "DANGER"
+                    }
+                  ]
+                },
+                {
+            "minHeight" : "100 px",
+                  "Columns": [
+                    {
+                      "Value": "Foto 3x4"
+                    },
+                    {
+                      "Value": "Entregar até 29/06/2020",
+                      "Notication State": "INFO"
+                    }
+                  ]
+                },
+                {
+            "minHeight" : "100 px",
+                  "Columns": [
+                    {
+                      "Value": "Histórico escolar do Ensino Fundamental"
+                    },
+                    {
+                      "Value": "OK",
+                      "Notication State": "SUCCESS"
+                    }
+                  ]
+                },
+                {
+            "minHeight" : "100 px",
+                  "Columns": [
+                    {
+                      "Value": "Histórico escolar do Ensino Médio"
+                    },
+                    {
+                      "Value": "Atualizar até 29/06/2020",
+                      "Notication State": "WARNING"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -612,7 +417,9 @@ function iterateCells($line) {
     if (array_key_exists("val", $cell)) {
       $value = $cell["val"];
     }
-    if (array_key_exists("color", $cell)) {
+    if (array_key_exists("Notication State", $cell)) {
+      $color = $cell["Notication State"];
+    } else if (array_key_exists("color", $cell)) {
       $color = $cell["color"];
     } else {
       $color = NULL;
@@ -625,7 +432,17 @@ function iterateCells($line) {
 function renderCell($value, $color) {
   $value = str_replace(" ","", $value);
   if ($color !== NULL ) {
-      echo '<td style="color:' . $color . '">' . $value . '</td>';
+      if ($color === "SUCCESS") {
+        echo '<td><div class="bg-success notify" style="width: 100px; height: 60px">' . $value . '</div></td>';
+      } else if ($color === "DANGER") {
+        echo '<td><div class="bg-danger notify" style="width: 100px; height: 60px">' . $value . '</div></td>';
+      } else if ($color === "WARNING") {
+        echo '<td><div class="bg-warning notify" style="width: 100px; height: 60px">' . $value . '</div></td>';
+      } else if ($color === "INFO") {
+        echo '<td><div class="bg-info notify" style="width: 100px; height: 60px">' . $value . '</div></td>';
+      } else {
+        echo '<td style="color:' . $color . '">' . $value . '</td>';
+      }
     } else {
       echo '<td>' . $value . '</td>';
     }

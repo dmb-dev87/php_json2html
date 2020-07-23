@@ -103,3 +103,11 @@ select#period {
   font-weight: 700;
   margin-bottom: 0px;
 }
+
+.notify {
+  text-align: center;
+  border-radius: 8px;
+  line-break: anywhere;
+  line-height: 30px;
+  color: white;
+}
