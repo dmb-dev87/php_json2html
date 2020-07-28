@@ -12,7 +12,7 @@
 <body>
   <?php
     include '../script/render.php';
-    include '../data/diarioData.php';
+    include '../data/diarioData3.php';
     $data = connect();
     if ($data !== null) {
       displayPage($data);
@@ -28,7 +28,6 @@
 $(document).ready(function(){
   $("div.action").hide();
   var div_id = $('#period').val();
-  console.log("###22222##", div_id);
   $("div#"+div_id).show();
 });
 
@@ -42,7 +41,7 @@ $('#period').change(function(){
 
 $(document).ready(function(){
   $("#btn_load").click(function(){
-    window.location.href = "http://localhost:8090/diarioTest2.php";
+    window.location.href = "https://freelancer.com/";
   });
 });
 
