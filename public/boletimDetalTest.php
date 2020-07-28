@@ -27,8 +27,7 @@
 <script>
 $(document).ready(function(){
   $("div.action").hide();
-  var div_id = $('#period').val();
-  console.log("###22222##", div_id);
+  var div_id = $('select.main_sel').val();
   $("#"+div_id).show();
 });
 
@@ -36,22 +35,6 @@ $('#period').change(function(){
   $("div.action").hide();
   //Selected value
   var div_id = $(this).val();
-  console.log("div#"+div_id);
-  $("div#"+div_id).show();
-});
-
-$(document).ready(function(){
-  $("div.subaction").hide();
-  var div_id = $('#student').val();
-  console.log("======= student-ready ===> ", div_id);
-  $("div#"+div_id).show();
-});
-
-$('#student').change(function(){
-  $("div.subaction").hide();
-  //Selected value
-  var div_id = $(this).val();
-  console.log("======= student-change ===> ", div_id);
   $("div#"+div_id).show();
 });
 </script>

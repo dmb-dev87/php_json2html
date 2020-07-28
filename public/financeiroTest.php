@@ -25,35 +25,33 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 <script>
-$(document).ready(function(){
+
+function showHideChnage() {
   $("div.action").hide();
-  var div_id = $('#period').val();
-  console.log("###22222##", div_id);
-  $("#"+div_id).show();
-});
 
-$('#period').change(function(){
-  $("div.action").hide();
-  //Selected value
-  var div_id = $(this).val();
-  console.log("div#"+div_id);
+  var main_div = $("select.main_sel").val();
+  
+  $("div#" + main_div).show();
+  $("div#" + main_div).children().hide();
+
+  $("div.selector").show();
+  var sub_div = $("select#"+main_div).val();  
+  var div_id = main_div + "_" + sub_div;
   $("div#"+div_id).show();
-});
+}
 
 $(document).ready(function(){
-  $("div.subaction").hide();
-  var div_id = $('#student').val();
-  console.log("======= student-ready ===> ", div_id);
-  $("div#"+div_id).show();
+  showHideChnage();
+
+  $('select.sub_sel').change(function() {
+    showHideChnage();
+  });
+
+  $('select.main_sel').change(function() {
+    showHideChnage();
+  });
 });
 
-$('#student').change(function(){
-  $("div.subaction").hide();
-  //Selected value
-  var div_id = $(this).val();
-  console.log("======= student-change ===> ", div_id);
-  $("div#"+div_id).show();
-});
 </script>
 
 </html>

@@ -75,9 +75,11 @@ function renderField($label, $value) {
 //<---------- Select --------->//
 function renderSelectId($val) {
   $elements = $val;
+  $sel_id;
   echo '<div class="row selector">';
   foreach ($elements as $key => $val) {
     if ($key === "Label") {
+      $sel_id = str_replace(" ", "", $val);
       echo '<p class="label">'.$val.':</p>';
     }
 
@@ -87,7 +89,7 @@ function renderSelectId($val) {
 
     if ($key === "Values") {
       $options = $val;
-      echo '<select id="period">';
+      echo '<select class="main_sel" id="'.$sel_id.'">';
       foreach ($options as $option) {
         foreach ($option as $optkey => $optval) {
           $selected = $default_value===$optval?' selected':' ';
@@ -106,12 +108,14 @@ function renderSelectId($val) {
   }
 }
 
-function renderSubSelectId($val) {
+function renderSubSelectId($val, $parent_divid) {
   $elements = $val;
+  $sel_id;
   echo '<div class="row selector" style="margin-top: 20px">';
   foreach ($elements as $key => $val) {
     if ($key === "Label") {
       echo '<p class="label">'.$val.':</p>';
+      $sel_id = str_replace(" ", "", $val);
     }
 
     if ($key === "Default Value") {
@@ -120,7 +124,7 @@ function renderSubSelectId($val) {
 
     if ($key === "Values") {
       $options = $val;
-      echo '<select id="student">';
+      echo '<select class="sub_sel" id="'.$parent_divid.'">';
       foreach ($options as $option) {
         foreach ($option as $optkey => $optval) {
           $selected = $default_value===$optval?' selected':' ';
@@ -132,7 +136,7 @@ function renderSubSelectId($val) {
     if ($key === "actions") {
       $actions = $val;
       foreach($actions as $action) {
-        renderSubAction($action);
+        renderSubAction($action, $parent_divid);
       }
     }
   }
@@ -140,11 +144,12 @@ function renderSubSelectId($val) {
 
 function renderAction($action) {
   $elements = $action;
+  $div_id;
 
   foreach($elements as $key => $val) {
     if ($key === "selected value") {
-      // $id_value = str_replace(" ", "", $val);
-      echo '<div class="action col" id="' . str_replace(" ", "", $val) . '">';
+      $div_id = str_replace(" ", "", $val);
+      echo '<div class="action col" id="' . $div_id . '">';
     }
     if ($key === "blocks") {
       iterateBlocks($val);  
@@ -153,7 +158,7 @@ function renderAction($action) {
       renderTrailerId($val);  
     }
     if ($key === "select") {
-      renderSubSelectId($val);
+      renderSubSelectId($val, $div_id);
     }
 
   }
@@ -161,13 +166,14 @@ function renderAction($action) {
   echo '</div>';
 }
 
-function renderSubAction($action) {
+function renderSubAction($action, $parent_divid) {
   $elements = $action;
+  $div_id;
 
   foreach($elements as $key => $val) {
     if ($key === "selected value") {
-      // $id_value = str_replace(" ", "", $val);
-      echo '<div class="subaction col" id="' . str_replace(" ", "", $val) . '">';
+      $div_id = $parent_divid . '_' . str_replace(" ", "", $val);
+      echo '<div class="subaction col" id="' . $div_id . '">';
     }
     if ($key === "blocks") {
       iterateBlocks($val);  
