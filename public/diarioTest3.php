@@ -26,20 +26,6 @@
 
 <script>
 $(document).ready(function(){
-  $("div.action").hide();
-  var div_id = $('#period').val();
-  $("div#"+div_id).show();
-});
-
-$('#period').change(function(){
-  $("div.action").hide();
-  //Selected value
-  var div_id = $(this).val();
-  console.log("div#"+div_id);
-  $("div#"+div_id).show();
-});
-
-$(document).ready(function(){
   $("#btn_load").click(function(){
     window.location.href = "https://freelancer.com/";
   });

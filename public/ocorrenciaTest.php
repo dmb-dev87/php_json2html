@@ -25,20 +25,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 <script>
-$(document).ready(function(){
-  $("div.action").hide();
-  var div_id = $('#period').val();
-  console.log("###22222##", div_id);
-  $("div#"+div_id).show();
-});
-
-$('#period').change(function(){
-  $("div.action").hide();
-  //Selected value
-  var div_id = $(this).val();
-  console.log("div#"+div_id);
-  $("div#"+div_id).show();
-});
 </script>
 
 </html>
