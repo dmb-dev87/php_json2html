@@ -1,175 +1,12 @@
 <?php
 
-function displayPage() {
-  $res = connect();
-  
-  if ($res === NULL)
-  return 0;
+function displayPage($res) {
+
   echo '<div class="container">';
   
   iterateIds($res);
-  // echo '<script>
-  // function OnSelectionChange() {
-    //   if(isset($_GET["period"])){
-  //     $period=$_GET["period"];
-  //     echo "select country is => ".$period;
-  // }
-  // }
-  // </script>';
+  
   echo '</div>';
-}
-
-function connect() {
-
-/*
- * Add API URL here
- */
-//  $url = "http://jsonurlXXXXX";
-//  $data = file_get_contents($url);
-
-// test json data
-    $data = '
-    {
-      "ids": [
-        {
-          "id": "1",
-          "header": {
-            "style": "card",
-            "fields": [
-              {
-                "Label": "Nome :",
-                "Value": "here goes kid name"
-              },
-              {
-                "Label": "Data :",
-                "Value": "26/06/2020 15:30"
-              },
-              {
-                "Label": "Matéria :",
-                "Value": "Português"
-              },
-              {
-                "Label": "Professor :",
-                "Value": "Fulano de tal"
-              }
-            ]
-          },
-          "blocks": [
-            {
-              "barposition": "left",
-              "barcolor": "red",
-              "Columns": [
-                {
-                  "Title": "Ocorrência",
-                  "Width": "100 %"
-                }
-              ],
-              "Lines": [
-                {
-                  "Columns": [
-                    {
-                      "Value": "Here we can have very big text\\nWith many lines\\nfasd\\nfadsf\\nfsad\\nfasdfasdfafasdfa"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "barposition": "left",
-              "barcolor": "green",
-              "Columns": [
-                {
-                  "Title": "Solução",
-                  "Width": "100 %"
-                }
-              ],
-              "Lines": [
-                {
-                  "Columns": [
-                    {
-                      "Value": "Here we can have very big text too\\nWith many lines, or just a few ones"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "2",
-          "header": {
-            "style": "card",
-            "fields": [
-              {
-                "Label": "Nome :",
-                "Value": "here goes kid name"
-              },
-              {
-                "Label": "Data :",
-                "Value": "26/06/2020 15:30"
-              },
-              {
-                "Label": "Matéria : ",
-                "Value": "Português"
-              },
-              {
-                "Label": "Professor :",
-                "Value": "Fulano de tal"
-              }
-            ]
-          },
-          "blocks": [
-            {
-              "barposition": "left",
-              "barcolor": "red",
-              "Columns": [
-                {
-                  "Title": "Ocorrência",
-                  "Width": "100 %"
-                }
-              ],
-              "Lines": [
-                {
-                  "Columns": [
-                    {
-                      "Value": "Here we can have very big text"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "barposition": "left",
-              "barcolor": "blue",
-              "Columns": [
-                {
-                  "Title": "Solução",
-                  "Width": "100 %"
-                }
-              ],
-              "Lines": [
-                {
-                  "Columns": [
-                    {
-                      "Value": "Here we can have very big text too\\nWith many lines, or just a few ones"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "DownloadMoreData": {
-        "Caption": "LOAD MORE DATA",
-        "link": "httponsonocorrencia2.txt"
-     }
-    }
-    ';
-
-    $res = json_decode($data, true);
-
-    return $res;
 }
 
 function iterateIds($json) {
@@ -259,11 +96,43 @@ function renderSelectId($val) {
       }
       echo '</select></div>';
     }
-
-    if ($key === "Actions") {
+    
+    if ($key === "Actions" || $key === "actions") {
       $actions = $val;
       foreach($actions as $action) {
         renderAction($action);
+      }
+    }
+  }
+}
+
+function renderSubSelectId($val) {
+  $elements = $val;
+  echo '<div class="row selector" style="margin-top: 20px">';
+  foreach ($elements as $key => $val) {
+    if ($key === "Label") {
+      echo '<p class="label">'.$val.':</p>';
+    }
+
+    if ($key === "Default Value") {
+      $default_value = str_replace(" ", "", $val);
+    }
+
+    if ($key === "Values") {
+      $options = $val;
+      echo '<select id="student">';
+      foreach ($options as $option) {
+        foreach ($option as $optkey => $optval) {
+          $selected = $default_value===$optval?' selected':' ';
+          echo '<option value="'.str_replace(" ", "", $optval). '" ' . $selected.'>'.$optval.'</option>';
+        }
+      }
+      echo '</select></div>';
+    }
+    if ($key === "actions") {
+      $actions = $val;
+      foreach($actions as $action) {
+        renderSubAction($action);
       }
     }
   }
@@ -274,7 +143,7 @@ function renderAction($action) {
 
   foreach($elements as $key => $val) {
     if ($key === "selected value") {
-      $id_value = str_replace(" ", "", $val);
+      // $id_value = str_replace(" ", "", $val);
       echo '<div class="action col" id="' . str_replace(" ", "", $val) . '">';
     }
     if ($key === "blocks") {
@@ -283,6 +152,33 @@ function renderAction($action) {
     if ($key === "trailer") {
       renderTrailerId($val);  
     }
+    if ($key === "select") {
+      renderSubSelectId($val);
+    }
+
+  }
+
+  echo '</div>';
+}
+
+function renderSubAction($action) {
+  $elements = $action;
+
+  foreach($elements as $key => $val) {
+    if ($key === "selected value") {
+      // $id_value = str_replace(" ", "", $val);
+      echo '<div class="subaction col" id="' . str_replace(" ", "", $val) . '">';
+    }
+    if ($key === "blocks") {
+      iterateBlocks($val);  
+    }
+    if ($key === "trailer") {
+      renderTrailerId($val);  
+    }
+    if ($key === "select") {
+      renderSubSelectId($val);
+    }
+
   }
 
   echo '</div>';
@@ -310,16 +206,18 @@ function renderBlock($block) {
       <table class="table">
         <thead class="thead-light">
           <tr>';
-          $columns = $block["Columns"];
-  iterateColumns($columns);
+          if (array_key_exists("Columns", $block)) {
+            $columns = $block["Columns"];
+            iterateColumns($columns);
+          }
   echo '
   </tr>
   </thead>
   <tbody>';
-
-  $lines = $block["Lines"];
-  iterateLines($lines);
-
+  if (array_key_exists("Lines", $block)) {
+    $lines = $block["Lines"];
+    iterateLines($lines);
+  }
     echo '
       </tbody>
       </table>
@@ -378,8 +276,8 @@ function iterateCells($line) {
     if (array_key_exists("val", $cell)) {
       $value = $cell["val"];
     }
-    if (array_key_exists("Notication State", $cell)) {
-      $color = $cell["Notication State"];
+    if (array_key_exists("Notification State", $cell)) {
+      $color = $cell["Notification State"];
     } else if (array_key_exists("color", $cell)) {
       $color = $cell["color"];
     } else {
@@ -391,16 +289,16 @@ function iterateCells($line) {
 }
 
 function renderCell($value, $color) {
-  $value = str_replace(" ","", $value);
+  $value = str_replace(" %","%", $value);
   if ($color !== NULL ) {
       if ($color === "SUCCESS") {
-        echo '<td><div class="bg-success notify" style="width: 100px; height: 60px">' . $value . '</div></td>';
+        echo '<td><div class="bg-success notify">' . $value . '</div></td>';
       } else if ($color === "DANGER") {
-        echo '<td><div class="bg-danger notify" style="width: 100px; height: 60px">' . $value . '</div></td>';
+        echo '<td><div class="bg-danger notify">' . $value . '</div></td>';
       } else if ($color === "WARNING") {
-        echo '<td><div class="bg-warning notify" style="width: 100px; height: 60px">' . $value . '</div></td>';
+        echo '<td><div class="bg-warning notify">' . $value . '</div></td>';
       } else if ($color === "INFO") {
-        echo '<td><div class="bg-info notify" style="width: 100px; height: 60px">' . $value . '</div></td>';
+        echo '<td><div class="bg-info notify">' . $value . '</div></td>';
       } else {
         echo '<td style="color:' . $color . '">' . $value . '</td>';
       }
@@ -424,10 +322,9 @@ function renderTrailerId($val) {
 
 function renderLoadTag($val) {
   echo '
-  <div class="link-tag">
+  <button id="btn_load">
   '.$val["Caption"].'
-  <div>';
-
+  </button>';
 }
 
 ?>

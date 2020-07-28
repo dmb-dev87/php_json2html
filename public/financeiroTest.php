@@ -11,17 +11,13 @@
 
 <body>
   <?php
-    include '../parser/render.php';
-    displayPage();
+    include '../script/render.php';
+    include '../data/financeiroData.php';
+    $data = connect();
+    if ($data !== null) {
+      displayPage($data);
+    }
   ?>
-
-<?php
-   if(isset($_GET["period"])){
-       $country=$_GET["period"];
-       die($country);
-       echo "select country is => ".$country;
-   }
-?>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -32,13 +28,30 @@
 $(document).ready(function(){
   $("div.action").hide();
   var div_id = $('#period').val();
-  $("div#"+div_id).show();
+  console.log("###22222##", div_id);
+  $("#"+div_id).show();
 });
 
 $('#period').change(function(){
   $("div.action").hide();
   //Selected value
   var div_id = $(this).val();
+  console.log("div#"+div_id);
+  $("div#"+div_id).show();
+});
+
+$(document).ready(function(){
+  $("div.subaction").hide();
+  var div_id = $('#student').val();
+  console.log("======= student-ready ===> ", div_id);
+  $("div#"+div_id).show();
+});
+
+$('#student').change(function(){
+  $("div.subaction").hide();
+  //Selected value
+  var div_id = $(this).val();
+  console.log("======= student-change ===> ", div_id);
   $("div#"+div_id).show();
 });
 </script>
