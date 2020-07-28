@@ -1,20 +1,6 @@
 <?php
 function connect() {
 
-/*
- * Add API URL here
- */
-//  $url = "http://jsonurlXXXXX";
-//  $data = file_get_contents($url);
-
-//  $url = "https://sisalu.com.br//json//jsondiario2.txt";
-//  $json = file_get_contents($url);
-
-//  $json = trim(file_get_contents($url), "\xEF\xBB\xBF");
-//  $jdata = json_decode($json,true);
-
-//  var_dump($jdata);
-// test json data
     $data = '
     {
         "ids": [

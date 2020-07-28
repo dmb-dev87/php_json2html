@@ -25,6 +25,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 <script>
+$(document).ready(function(){
+  $("#btn_load").click(function(){
+    window.location.href = "./ocorrenciaTest2.php";
+  });
+});
 </script>
 
 </html>

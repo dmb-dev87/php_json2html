@@ -1,13 +1,6 @@
 <?php
 function connect() {
 
-/*
- * Add API URL here
- */
-//  $url = "http://jsonurlXXXXX";
-//  $data = file_get_contents($url);
-
-// test json data
     $data = '
     {
         "ids": [

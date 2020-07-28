@@ -27,7 +27,7 @@
 <script>
 $(document).ready(function(){
   $("#btn_load").click(function(){
-    window.location.href = "http://localhost:8090/diarioTest3.php";
+    window.location.href = "./diarioTest3.php";
   });
 });
 

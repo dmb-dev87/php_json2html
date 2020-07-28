@@ -75,8 +75,8 @@ function renderField($label, $value) {
 //<---------- Select --------->//
 function renderSelectId($val) {
   $elements = $val;
-  $sel_id;
-  echo '<div class="row selector">';
+  $sel_id = "";
+  echo '<div class="row selector mg-top">';
   foreach ($elements as $key => $val) {
     if ($key === "Label") {
       $sel_id = str_replace(" ", "", $val);
@@ -110,7 +110,7 @@ function renderSelectId($val) {
 
 function renderSubSelectId($val, $parent_divid) {
   $elements = $val;
-  $sel_id;
+  $sel_id = "";
   echo '<div class="row selector" style="margin-top: 20px">';
   foreach ($elements as $key => $val) {
     if ($key === "Label") {
@@ -144,7 +144,7 @@ function renderSubSelectId($val, $parent_divid) {
 
 function renderAction($action) {
   $elements = $action;
-  $div_id;
+  $sel_id = "";
 
   foreach($elements as $key => $val) {
     if ($key === "selected value") {
@@ -168,7 +168,7 @@ function renderAction($action) {
 
 function renderSubAction($action, $parent_divid) {
   $elements = $action;
-  $div_id;
+  $sel_id = "";
 
   foreach($elements as $key => $val) {
     if ($key === "selected value") {
@@ -230,7 +230,9 @@ function renderBlock($block) {
       </div>
       </div>';
 
-    if (array_key_exists("trailer", $block)) {
+    if (array_key_exists("Trailer", $block)) {
+      $trailerContent = $block["Trailer"]["htmlcontent"];
+    } else if (array_key_exists("trailer", $block)) {
       $trailerContent = $block["trailer"]["htmlcontent"];
     } else {
       $trailerContent = NULL;

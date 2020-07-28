@@ -34,20 +34,10 @@ body {
   padding: 0px;
 }
 
-select#period {
+select {
   background-color: #d9d9d9;
   border: 2px solid #656565;
   border-radius: 5px;
-  /* position: absolute;
-  left: 90px; */
-}
-
-select#student {
-  background-color: #d9d9d9;
-  border: 2px solid #656565;
-  border-radius: 5px;
-  /* position: absolute; */
-  /* left: 90px; */
 }
 
 .table {
@@ -94,6 +84,10 @@ select#student {
   margin-bottom: 20px;
 }
 
+.col {
+  padding: 0px;
+}
+
 .block {
   padding: 0px;
   margin: 0px;
@@ -133,6 +127,6 @@ button {
   width: -webkit-fill-available;
 }
 
-.row.selector.sel-mtop {
+.row.selector.mg-top {
   margin-top: 18px;
 }
