@@ -38,8 +38,8 @@ select#period {
   background-color: #d9d9d9;
   border: 2px solid #656565;
   border-radius: 5px;
-  position: absolute;
-  left: 90px;
+  /* position: absolute;
+  left: 90px; */
 }
 
 select#student {
@@ -58,6 +58,7 @@ select#student {
 .table td, .table th {
   padding: 2px 8px 2px 8px;
   font-size: 12px;
+  vertical-align: middle;
 }
 
 .trailer {
