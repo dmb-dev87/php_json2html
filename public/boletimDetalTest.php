@@ -31,7 +31,7 @@ $(document).ready(function(){
   $("#"+div_id).show();
 });
 
-$('#period').change(function(){
+$('select.main_sel').change(function(){
   $("div.action").hide();
   //Selected value
   var div_id = $(this).val();
