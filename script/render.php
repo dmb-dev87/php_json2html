@@ -182,7 +182,7 @@ function renderSubAction($action, $parent_divid) {
       renderTrailerId($val);  
     }
     if ($key === "select") {
-      renderSubSelectId($val);
+      renderSubSelectId($val, $div_id);
     }
 
   }
