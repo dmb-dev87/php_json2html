@@ -317,7 +317,7 @@ function renderCell($value, $color, $align, $url) {
       echo '<td style="text-align: '. $align .'">' . $value . '</td>';
     }
  }
-  
+
 function renderTrailerBlock($val) {
   if ($val !== NULL) {
     echo '<div class="trailer">' . $val . '</div>';
