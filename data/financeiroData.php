@@ -97,7 +97,7 @@ function connect() {
                                   },
                                   {
                                     "Value": "gerar boleto",
-                                    "link": "https:6z49"
+                                    "link": "https://www.google.com"
                                   }
                                 ]
                               },
@@ -109,7 +109,7 @@ function connect() {
                                   },
                                   {
                                     "Value": "abrir nfe",
-                                    "link": "https:J6z49"
+                                    "link": "https://www.google.com"
                                   }
                                 ]
                               }
@@ -187,7 +187,7 @@ function connect() {
                                   },
                                   {
                                     "Value": "gerar boleto",
-                                    "link": "https:thisisalink.to.be.open.in.a.new.windows.com"
+                                    "link": "https://www.google.com"
                                   }
                                 ]
                               },
@@ -199,7 +199,7 @@ function connect() {
                                   },
                                   {
                                     "Value": "abrir nfe",
-                                    "link": "https:sisalu.com.brJ6z49"
+                                    "link": "https://www.google.com"
                                   }
                                 ]
                               }
@@ -284,7 +284,7 @@ function connect() {
                                   },
                                   {
                                     "Value": "gerar boleto",
-                                    "link": "https:thisisalink.to.be.open.in.a.new.windows.com"
+                                    "link": "https://www.google.com"
                                   }
                                 ]
                               },
@@ -296,7 +296,7 @@ function connect() {
                                   },
                                   {
                                     "Value": "abrir nfe",
-                                    "link": "httpsthisisalink.to.be.open.in.a.new.windows.com"
+                                    "link": "https://www.google.com"
                                   }
                                 ]
                               }
@@ -378,7 +378,7 @@ function connect() {
                                   },
                                   {
                                     "Value": "gerar boleto",
-                                    "link": "https:thisisalink.to.be.open.in.a.new.windows.com"
+                                    "link": "https://www.google.com"
                                   }
                                 ]
                               },
@@ -390,7 +390,7 @@ function connect() {
                                   },
                                   {
                                     "Value": "abrir nfe",
-                                    "link": "https:thisisalink.to.be.open.in.a.new.windows.com"
+                                    "link": "https://www.google.com"
                                   }
                                 ]
                               }

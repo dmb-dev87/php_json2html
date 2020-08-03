@@ -51,6 +51,10 @@ select {
   vertical-align: middle;
 }
 
+.header-table {
+  margin-top: 10px;
+}
+
 .trailer {
   background-color: #0606066e;
   text-align: left;
@@ -69,7 +73,6 @@ select {
 }
 
 .block-title {
-  margin-bottom: 10px;
   background-color: #0606066e;
   border: 1.5px solid #1212125c;
   border-radius: 6px;
@@ -108,6 +111,7 @@ select {
 }
 
 .notify {
+  width: 82px;
   text-align: center;
   border-radius: 8px;
   line-break: anywhere;
@@ -117,7 +121,6 @@ select {
 }
 
 button {
-  /* margin-top: 20px; */
   background-color: #28bd28;
   border-radius: 12px;
   text-align: center;
@@ -129,4 +132,8 @@ button {
 
 .row.selector.mg-top {
   margin-top: 18px;
+}
+
+.table-responsive {
+  overflow-x: visible;
 }

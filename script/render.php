@@ -1,11 +1,8 @@
 <?php
 
 function displayPage($res) {
-
   echo '<div class="container">';
-  
   iterateIds($res);
-  
   echo '</div>';
 }
 
@@ -45,7 +42,7 @@ function renderId($id) {
 //<---------- Header --------->//
 function renderHeaderId($val) {
   $heads = $val["fields"];
-  echo '<div class="header">';  
+  echo '<div class="header">';
   iterateFields($heads);
   echo '</div>';
 }
@@ -198,50 +195,36 @@ function iterateBlocks($val) {
 }
 
 function renderBlock($block) {
+  $table_class = "";
   echo '<div class="row">';
-  $color = $block["barcolor"];
-  renderBar($color);
+  if (array_key_exists("barcolor", $block))
+  {
+    renderBar($block["barcolor"]);
+  }
   echo '<div class="col block">';
   if (array_key_exists("Header text", $block)) {
     $headerText = $block["Header text"];
     renderHeaderBlock($headerText);
-  }
-  echo '
-  <div class="w3-padding w3-white notranslate">
-    <div class="table-responsive">
-      <table class="table">
-        <thead class="thead-light">
-          <tr>';
-          if (array_key_exists("Columns", $block)) {
-            $columns = $block["Columns"];
-            iterateColumns($columns);
-          }
-  echo '
-  </tr>
-  </thead>
-  <tbody>';
-  if (array_key_exists("Lines", $block)) {
-    $lines = $block["Lines"];
-    iterateLines($lines);
-  }
-    echo '
-      </tbody>
-      </table>
-      </div>
-      </div>';
-
-    if (array_key_exists("Trailer", $block)) {
-      $trailerContent = $block["Trailer"]["htmlcontent"];
-    } else if (array_key_exists("trailer", $block)) {
-      $trailerContent = $block["trailer"]["htmlcontent"];
-    } else {
-      $trailerContent = NULL;
+    $table_class = "header-table";
+  }  
+  if (array_key_exists("Columns", $block)) {
+    echo '<div class="w3-padding w3-white notranslate table-responsive">';
+    echo '<table class="table ' . $table_class . '">';
+    iterateColumns($block["Columns"]);
+    if (array_key_exists("Lines", $block)) {
+      iterateLines($block["Lines"]);
     }
+    echo '</table></div>';
+  }
 
+  if (array_key_exists("Trailer", $block)) {
+    $trailerContent = $block["Trailer"]["htmlcontent"];
     renderTrailerBlock($trailerContent);
-    echo '
-      </div>
-      </div>';
+  } else if (array_key_exists("trailer", $block)) {
+    $trailerContent = $block["trailer"]["htmlcontent"];
+    renderTrailerBlock($trailerContent);
+  }  
+  echo '</div></div>';
 }
 
 function renderBar($color) {
@@ -253,22 +236,30 @@ function renderHeaderBlock($headerText) {
 }
 
 function iterateColumns($columns) {
+  echo '<thead class="thead-light">';
+  echo '<tr>';
   foreach ($columns as $column) {
     $title = $column["Title"];
     $width = $column["Width"];
     renderColumn($title, $width);
   }
+  echo '</tr></thead>';
 }
 
 function renderColumn($title, $width) {
   $width = str_replace(" ","", $width);
-  echo '<th style="width:' . $width . '">' . $title . '</th>';
+  if ($title == "")
+    echo '<th style="width:' . $width . '; display:none;">' . $title . '</th>';
+  else
+    echo '<th style="width:' . $width . '">' . $title . '</th>';
 }
 
 function iterateLines($lines) {
+  echo '<tbody>';
   foreach ($lines as $line) {
     iterateCells($line);
   }
+  echo '</tbody>';
 }
 
 function iterateCells($line) {
@@ -284,6 +275,11 @@ function iterateCells($line) {
     if (array_key_exists("val", $cell)) {
       $value = $cell["val"];
     }
+    if (array_key_exists("link", $cell)) {
+      $url = $cell["link"];
+    } else {
+      $url = NULL;
+    }
     if (array_key_exists("Notification State", $cell)) {
       $color = $cell["Notification State"];
     } else if (array_key_exists("color", $cell)) {
@@ -291,12 +287,17 @@ function iterateCells($line) {
     } else {
       $color = NULL;
     }
-    renderCell(nl2br($value), $color);
+    if (array_key_exists("horizontal align", $cell)) {
+      $align = $cell["horizontal align"];
+    } else {
+      $align = "";
+    }
+    renderCell(nl2br($value), $color, $align, $url);
   }
   echo '</tr>';
 }
 
-function renderCell($value, $color) {
+function renderCell($value, $color, $align, $url) {
   $value = str_replace(" %","%", $value);
   if ($color !== NULL ) {
       if ($color === "SUCCESS") {
@@ -310,8 +311,10 @@ function renderCell($value, $color) {
       } else {
         echo '<td style="color:' . $color . '">' . $value . '</td>';
       }
+    } else if ($url !== NULL){
+      echo '<td style="text-align: '. $align .'"><a href="'. $url .'" target="_top">' . $value . '</a></td>';
     } else {
-      echo '<td>' . $value . '</td>';
+      echo '<td style="text-align: '. $align .'">' . $value . '</td>';
     }
  }
   
