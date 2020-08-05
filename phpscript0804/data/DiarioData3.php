@@ -10,7 +10,7 @@ function connect() {
             "style": "card",
             "fields": [
               {
-                "Label": "25/06/2020 - here goes kid name"
+                "Label": "24/06/2020 - here goes kid name"
               }
             ]
           },
@@ -75,7 +75,7 @@ function connect() {
             "style": "card",
             "fields": [
               {
-                "Label": "25/06/2020 - here goes kid name"
+                "Label": "24/06/2020 - here goes kid name"
               }
             ]
           },
@@ -108,10 +108,7 @@ function connect() {
             }
           ]
         }
-      ],
-      "DownloadMoreData": {
-        "Caption": "LOAD MORE DATA",
-        "link": "DiarioTest3.php"}
+      ]
     }
     ';
 

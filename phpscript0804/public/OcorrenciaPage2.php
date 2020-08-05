@@ -12,7 +12,7 @@
 <body>
   <?php
     include '../script/Render.php';
-    include '../data/BoletimData.php';
+    include '../data/OcorrenciaData2.php';
     $data = connect();
     if ($data !== null) {
       displayPage($data);

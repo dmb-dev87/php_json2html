@@ -11,8 +11,8 @@
 
 <body>
   <?php
-    include '../script/render.php';
-    include '../data/ocorrenciaData2.php';
+    include '../script/Render.php';
+    include '../data/BoletimData.php';
     $data = connect();
     if ($data !== null) {
       displayPage($data);
