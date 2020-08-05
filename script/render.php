@@ -141,7 +141,6 @@ function renderSubSelectId($val, $parent_divid) {
 
 function renderAction($action) {
   $elements = $action;
-  $sel_id = "";
 
   foreach($elements as $key => $val) {
     if ($key === "selected value") {
@@ -164,7 +163,6 @@ function renderAction($action) {
 
 function renderSubAction($action, $parent_divid) {
   $elements = $action;
-  $sel_id = "";
 
   foreach($elements as $key => $val) {
     if ($key === "selected value") {
